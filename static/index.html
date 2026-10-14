@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f7fb">
+    <meta name="description" content="Check a text message for spam with a machine-learning classifier.">
+    <title>Message Check — SMS Spam Classifier</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Message Check home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 5.75h14A1.75 1.75 0 0 1 20.75 7.5v9A1.75 1.75 0 0 1 19 18.25H9l-5.75 3v-13A2.5 2.5 0 0 1 5.75 5.75Z" />
+              <path d="m8 10 4 3 4-3" />
+            </svg>
+          </span>
+          <span>message<span class="brand-accent">check</span></span>
+        </a>
+        <a class="api-link" href="/docs" target="_blank" rel="noreferrer">
+          API docs
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M6 3h7v7M13 3 6.5 9.5" />
+            <path d="M11 9v3.5a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7" />
+          </svg>
+        </a>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> A little more peace of mind</div>
+          <h1 id="page-title">Know what’s in<br>your <span>inbox.</span></h1>
+          <p class="intro-copy">Paste in a text message and let our classifier check whether it looks like spam. Quick, private, and easy.</p>
+          <div class="trust-note">
+            <span class="lock-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="none"><rect x="4.5" y="8.5" width="11" height="8" rx="2" /><path d="M7 8.5V6a3 3 0 0 1 6 0v2.5" /></svg>
+            </span>
+            <span>Your message is only used for this check.</span>
+          </div>
+        </section>
+
+        <section class="checker-card" aria-label="Message spam check">
+          <div class="card-heading">
+            <div>
+              <h2>Check a message</h2>
+              <p>Paste or type the text you want to check.</p>
+            </div>
+            <span class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7.5 4.75h9A2.75 2.75 0 0 1 19.25 7.5v11A1.75 1.75 0 0 1 17.5 20.25h-11A1.75 1.75 0 0 1 4.75 18.5v-11A2.75 2.75 0 0 1 7.5 4.75Z" />
+                <path d="M8.5 9h7m-7 3.5h7m-7 3.5h4" />
+              </svg>
+            </span>
+          </div>
+
+          <form id="check-form">
+            <label for="message-input">Your message</label>
+            <div class="textarea-wrap">
+              <textarea id="message-input" name="message" maxlength="5000" rows="6" placeholder="e.g. You’ve won a prize! Call now to claim..." required aria-describedby="input-hint character-count"></textarea>
+              <span id="character-count" class="character-count">0 / 5,000</span>
+            </div>
+            <div class="input-meta">
+              <span id="input-hint">Your message stays on this server for the check.</span>
+              <button class="clear-button" id="clear-button" type="button" disabled>Clear</button>
+            </div>
+            <button class="submit-button" id="submit-button" type="submit">
+              <span class="button-label">Check message</span>
+              <svg class="button-arrow" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4.5 10h11m-4.5-4.5 4.5 4.5-4.5 4.5" />
+              </svg>
+            </button>
+          </form>
+
+          <div class="result" id="result" role="status" aria-live="polite" hidden>
+            <span class="result-icon" id="result-icon" aria-hidden="true"></span>
+            <div class="result-content">
+              <span class="result-kicker" id="result-kicker"></span>
+              <strong id="result-title"></strong>
+              <p id="result-description"></p>
+            </div>
+            <button class="dismiss-button" id="dismiss-button" type="button" aria-label="Dismiss result">×</button>
+          </div>
+
+          <div class="card-footer">
+            <span><span class="footer-check" aria-hidden="true">✓</span> No message storage</span>
+            <span>Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> to check</span>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>Made to make your inbox feel a little safer.</span>
+        <span class="footer-separator" aria-hidden="true">·</span>
+        <span>Always use your best judgment with suspicious messages.</span>
+      </footer>
+    </div>
+  </body>
+</html>
